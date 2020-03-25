@@ -1,37 +1,57 @@
 //Global Variables
 var googleAPI = "AIzaSyDy-k7naixPLfTdtOFOWye58XgWfSUNrgY";
 var hikingAPI = "200712037-04ab66ab7f810ab7c981e63fe3f4d800";
-var latitude = 34.035627;
-var longitude = -118.012688;
-
+var map;
+var latitude = null;
+var longitude = null;
 
 //DOM Queries
-var submitButton = document.getElementById("submit")
-var locationForm = document.getElementById('location-form');
+var mapLanding = document.getElementById("map");
+var submitButton = document.getElementById("submit");
+var locationForm = document.getElementById("location-form");
 
-locationForm.addEventListener('submit', geocode);
+locationForm.addEventListener("submit", initiateApp);
+
+function initiateApp(e) {
+    mapLanding.innerHTML = "";
+    geocode(e)
+}
 
 function geocode(e) {
     e.preventDefault();
     var location = document.getElementById("location-input").value;
     var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({"address": location}, function(results, status) {
+    geocoder.geocode({ address: location }, function(results, status) {
         if (status === "OK") {
-            console.log(results[0].geometry.location.lat())
-            console.log(results[0].geometry.location.lng())
+            latitude = results[0].geometry.location.lat();
+            longitude = results[0].geometry.location.lng();
+            getHikingTrails(latitude, longitude)
+            initMap();
+        }
+    });
+    console.log(location);
+}
+
+function initMap() {
+    map = new google.maps.Map(mapLanding, {
+        center: { lat: latitude, lng: longitude },
+        zoom: 10
+    });
+}
+
+function getHikingTrails(lat, long) {
+    $.ajax({
+        method: "GET",
+        url: "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + long + "&maxDistance=10&key=" + hikingAPI,
+        success: function(data) {
+            console.log(data.trails)
+        },
+        error: function(err) {
+            console.error(err);
         }
     })
-    console.log(location)
-}
 
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: latitude, lng: longitude},
-    zoom: 8
-  });
 }
-
 
 // function initMap() {
 //     var map = new google.maps.Map(document.getElementById('map'), {
