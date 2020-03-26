@@ -6,7 +6,7 @@ var infoWindow;
 
 //DOM Queries
 var mapLanding = document.getElementById("map");
-var mapInfo = document.getElementById("map-info") // FOR REMOVING D-NONE
+var mapInfo = document.getElementById("map-info"); // FOR REMOVING D-NONE
 var submitButton = document.getElementById("submit");
 var locationForm = document.getElementById("location-form");
 var infoSection = document.getElementById("info");
@@ -16,7 +16,7 @@ locationForm.addEventListener("submit", initiateApp);
 function initiateApp(e) {
     mapLanding.innerHTML = "";
     infoSection.innerHTML = "";
-    mapInfo.className = "container d-none" // FOR REMOVING D-NONE
+    mapInfo.className = "container d-none"; // FOR REMOVING D-NONE
     geocode(e);
 }
 
@@ -30,7 +30,7 @@ function geocode(e) {
             var longitude = results[0].geometry.location.lng();
             getHikingTrails(latitude, longitude);
         } else {
-            alert('ADDRESS CANNOT BE FOUND')
+            alert("ADDRESS CANNOT BE FOUND");
         }
     });
 }
@@ -45,7 +45,7 @@ function initMap(lat, long, array) {
 
     for (let i = 0; i < array.length; i++) {
         addMarker(array[i]);
-        addInfoDiv(array[i])
+        addInfoDiv(array[i]);
     }
 }
 
@@ -75,7 +75,7 @@ function getHikingTrails(lat, long) {
         success: function(data) {
             var trailArray = data.trails;
             console.log(trailArray);
-            document.querySelector(".d-none").classList.remove("d-none") // FOR REMOVING D-NONE
+            document.querySelector(".d-none").classList.remove("d-none"); // FOR REMOVING D-NONE
             initMap(lat, long, trailArray);
         },
         error: function(err) {
@@ -89,6 +89,9 @@ function addInfoDiv(data) {
     name.textContent = data.name;
     var summary = document.createElement("p");
     summary.textContent = data.summary;
+    var difficulty = document.createElement("p");
+    var capitalized = data.difficulty.charAt(0).toUpperCase() + data.difficulty.slice(1);
+    difficulty.textContent = "Difficulty: " + capitalized;
     var rating = document.createElement("p");
     rating.textContent = "Rating: " + data.stars;
     var a = document.createElement("a");
@@ -101,6 +104,6 @@ function addInfoDiv(data) {
     trailInfo.classList.add("trail-info");
     trailInfo.style.backgroundColor = data.difficulty;
 
-    trailInfo.append(name, summary, rating, a)
-    infoSection.appendChild(trailInfo)
+    trailInfo.append(name, difficulty, summary, rating, a);
+    infoSection.appendChild(trailInfo);
 }

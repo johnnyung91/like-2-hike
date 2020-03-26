@@ -33,12 +33,12 @@ h1 {
 #map, #info {
     height: 65vh;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
     flex-basis: 49%;
 }
 
 #info {
-    background-color: rgba(36, 39, 42, 0.5);
+    /* background-color: rgba(36, 39, 42, 0.5); */
     overflow-y: scroll;
 }
 
@@ -47,13 +47,22 @@ h1 {
   }
 
 .trail-info {
-    border: 1px solid black;
-    margin: 20px;
+    /* border: 1px solid black; */
+    /* width: 100%; */
+    margin: 0 20px 20px 20px;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     opacity: 0.7;
     color: whitesmoke;
     word-wrap: break-word;
+}
+
+h5 {
+    font-weight: 900;
+}
+
+p {
+    margin-bottom: 8px;
 }
 
 input[type="text"], input[type="text"]:focus {
