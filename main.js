@@ -9,11 +9,13 @@ var mapLanding = document.getElementById("map");
 var mapInfo = document.getElementById("map-info") // FOR REMOVING D-NONE
 var submitButton = document.getElementById("submit");
 var locationForm = document.getElementById("location-form");
+var infoSection = document.getElementById("info");
 
 locationForm.addEventListener("submit", initiateApp);
 
 function initiateApp(e) {
     mapLanding.innerHTML = "";
+    infoSection.innerHTML = "";
     mapInfo.className = "container d-none" // FOR REMOVING D-NONE
     geocode(e);
 }
@@ -29,7 +31,6 @@ function geocode(e) {
             getHikingTrails(latitude, longitude);
         }
     });
-    console.log(location);
 }
 
 function initMap(lat, long, array) {
@@ -42,6 +43,7 @@ function initMap(lat, long, array) {
 
     for (let i = 0; i < array.length; i++) {
         addMarker(array[i]);
+        addInfoDiv(array[i])
     }
 }
 
@@ -81,5 +83,23 @@ function getHikingTrails(lat, long) {
 }
 
 function addInfoDiv(data) {
+    var name = document.createElement("h5");
+    name.textContent = data.name;
+    var summary = document.createElement("p");
+    summary.textContent = data.summary;
+    var rating = document.createElement("p");
+    rating.textContent = "Rating: " + data.stars;
+    var a = document.createElement("a");
+    var link = document.createTextNode(data.url);
+    a.href = data.url;
+    a.setAttribute("target", "_blank");
+    a.appendChild(link);
+
+    var trailInfo = document.createElement("div");
+    trailInfo.classList.add("trail-info");
+    trailInfo.style.backgroundColor = data.difficulty;
+
+    trailInfo.append(name, summary, rating, a)
+    infoSection.appendChild(trailInfo)
 
 }
