@@ -103,5 +103,4 @@ function addInfoDiv(data) {
 
     trailInfo.append(name, summary, rating, a)
     infoSection.appendChild(trailInfo)
-
 }
