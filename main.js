@@ -24,8 +24,6 @@ function geocode(e) {
             var latitude = results[0].geometry.location.lat();
             var longitude = results[0].geometry.location.lng();
             getHikingTrails(latitude, longitude);
-        } else {
-            alert("Geocode was not successful for the following reason: " + status);
         }
     });
     console.log(location);
