@@ -19,7 +19,12 @@ header h1 {
     background-color: rgba(251, 191, 95, 0.5)
 }
 
+.row-map {
+    margin: 0;
+    padding-bottom: 15px;
+}
+
 #map {
-    height: 65vh;
-    width: 90%;
+    height: 60vh;
+    width: 100%;
 }
