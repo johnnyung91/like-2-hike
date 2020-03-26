@@ -12,7 +12,7 @@ locationForm.addEventListener("submit", initiateApp);
 
 function initiateApp(e) {
     mapLanding.innerHTML = "";
-    geocode(e)
+    geocode(e);
 }
 
 function geocode(e) {
@@ -21,9 +21,9 @@ function geocode(e) {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: location }, function(results, status) {
         if (status === "OK") {
-            latitude = results[0].geometry.location.lat();
-            longitude = results[0].geometry.location.lng();
-            getHikingTrails(latitude, longitude)
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            getHikingTrails(latitude, longitude);
         }
     });
     console.log(location);
@@ -49,6 +49,9 @@ function addMarker(data) {
         var infoWindow = new google.maps.InfoWindow({
             content: data.name
         });
+        marker.addListener("click", function() {
+            infoWindow.open(map, marker);
+        })
     }
 }
 
