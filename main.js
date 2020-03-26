@@ -45,14 +45,14 @@ function addMarker(data) {
         position: { lat: data.latitude, lng: data.longitude },
         map: map
     });
-    if (data.name) {
-        var infoWindow = new google.maps.InfoWindow({
-            content: data.name
-        });
-        marker.addListener("click", function() {
-            infoWindow.open(map, marker);
-        })
-    }
+    // if (data.name) {
+    //     var infoWindow = new google.maps.InfoWindow({
+    //         content: data.name
+    //     });
+    //     marker.addListener("click", function() {
+    //         infoWindow.open(map, marker);
+    //     })
+    // }
 }
 
 function getHikingTrails(lat, long) {
