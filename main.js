@@ -2,6 +2,7 @@
 var googleAPI = "AIzaSyDy-k7naixPLfTdtOFOWye58XgWfSUNrgY";
 var hikingAPI = "200712037-04ab66ab7f810ab7c981e63fe3f4d800";
 var map;
+var infoWindow;
 
 //DOM Queries
 var mapLanding = document.getElementById("map");
@@ -35,6 +36,8 @@ function initMap(lat, long, array) {
         zoom: 10
     });
 
+    infoWindow = new google.maps.InfoWindow();
+
     for (let i = 0; i < array.length; i++) {
         addMarker(array[i]);
     }
@@ -45,14 +48,17 @@ function addMarker(data) {
         position: { lat: data.latitude, lng: data.longitude },
         map: map
     });
-    // if (data.name) {
-    //     var infoWindow = new google.maps.InfoWindow({
-    //         content: data.name
-    //     });
-    //     marker.addListener("click", function() {
-    //         infoWindow.open(map, marker);
-    //     })
-    // }
+
+    google.maps.event.addListener(marker, "click", function() {
+        var name = data.name;
+        var location = data.location;
+        var summary = data.summary;
+        var difficultyAndRating = `Difficulty: ${data.difficulty} || Rating: ${data.stars}`
+        var url = data.url;
+        var info = `<b>${name}</b> <br/> <br/>${location} <br/> <br/>${summary} <br/> <br/>${difficultyAndRating} <br/> <br/>${url}`
+        infoWindow.setContent(info)
+        infoWindow.open(map, this);
+    });
 }
 
 function getHikingTrails(lat, long) {
