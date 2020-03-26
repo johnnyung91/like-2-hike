@@ -29,11 +29,27 @@ function geocode(e) {
     console.log(location);
 }
 
-function initMap() {
+function initMap(lat, long, array) {
     map = new google.maps.Map(mapLanding, {
-        center: { lat: latitude, lng: longitude },
+        center: { lat: lat, lng: long },
         zoom: 10
     });
+
+    for (let i = 0; i < array.length; i++) {
+        addMarker(array[i]);
+    }
+}
+
+function addMarker(data) {
+    var marker = new google.maps.Marker({
+        position: { lat: data.latitude, lng: data.longitude },
+        map: map
+    });
+    if (data.name) {
+        var infoWindow = new google.maps.InfoWindow({
+            content: data.name
+        });
+    }
 }
 
 function getHikingTrails(lat, long) {
