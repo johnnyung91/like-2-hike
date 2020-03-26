@@ -2,8 +2,6 @@
 var googleAPI = "AIzaSyDy-k7naixPLfTdtOFOWye58XgWfSUNrgY";
 var hikingAPI = "200712037-04ab66ab7f810ab7c981e63fe3f4d800";
 var map;
-var latitude = null;
-var longitude = null;
 
 //DOM Queries
 var mapLanding = document.getElementById("map");
@@ -26,7 +24,6 @@ function geocode(e) {
             latitude = results[0].geometry.location.lat();
             longitude = results[0].geometry.location.lng();
             getHikingTrails(latitude, longitude)
-            initMap();
         }
     });
     console.log(location);
@@ -42,12 +39,20 @@ function initMap() {
 function getHikingTrails(lat, long) {
     $.ajax({
         method: "GET",
-        url: "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + long + "&maxDistance=10&key=" + hikingAPI,
+        url:
+            "https://www.hikingproject.com/data/get-trails?lat=" +
+            lat +
+            "&lon=" +
+            long +
+            "&maxDistance=15&key=" +
+            hikingAPI,
         success: function(data) {
-            console.log(data.trails)
+            var trailArray = data.trails;
+            console.log(trailArray);
+            initMap(lat, long, trailArray);
         },
         error: function(err) {
             console.error(err);
         }
-    })
+    });
 }
