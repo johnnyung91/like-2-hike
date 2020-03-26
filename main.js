@@ -6,6 +6,7 @@ var infoWindow;
 
 //DOM Queries
 var mapLanding = document.getElementById("map");
+var mapInfo = document.getElementById("map-info") // FOR REMOVING D-NONE
 var submitButton = document.getElementById("submit");
 var locationForm = document.getElementById("location-form");
 
@@ -13,6 +14,7 @@ locationForm.addEventListener("submit", initiateApp);
 
 function initiateApp(e) {
     mapLanding.innerHTML = "";
+    mapInfo.className = "container d-none" // FOR REMOVING D-NONE
     geocode(e);
 }
 
@@ -50,13 +52,8 @@ function addMarker(data) {
     });
 
     google.maps.event.addListener(marker, "click", function() {
-        var name = data.name;
-        var location = data.location;
-        var summary = data.summary;
-        var difficultyAndRating = `Difficulty: ${data.difficulty} || Rating: ${data.stars}`
-        var url = data.url;
-        var info = `<b>${name}</b> <br/> <br/>${location} <br/> <br/>${summary} <br/> <br/>${difficultyAndRating} <br/> <br/>${url}`
-        infoWindow.setContent(info)
+        var info = `<b>${data.name}</b> <br/> <br/>${data.location} <br/> <br/>${data.summary} <br/> <br/>Difficulty: ${data.difficulty} <br/> <br/> Rating: ${data.stars} <br/> <br/>${data.url}`;
+        infoWindow.setContent(info);
         infoWindow.open(map, this);
     });
 }
@@ -74,10 +71,15 @@ function getHikingTrails(lat, long) {
         success: function(data) {
             var trailArray = data.trails;
             console.log(trailArray);
+            document.querySelector(".d-none").classList.remove("d-none") // FOR REMOVING D-NONE
             initMap(lat, long, trailArray);
         },
         error: function(err) {
             console.error(err);
         }
     });
+}
+
+function addInfoDiv(data) {
+
 }

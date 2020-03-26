@@ -4,7 +4,7 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    font-family: 'Cabin', sans-serif;
+    font-family: "Cabin", sans-serif;
 }
 
 header {
@@ -30,7 +30,12 @@ h1 {
     padding-bottom: 15px;
 }
 
-#map {
+#map, #info {
     height: 65vh;
     width: 100%;
+    border-radius: 5px;
+}
+
+#info {
+    background-color: rgba(36, 39, 42, 0.5);
 }
