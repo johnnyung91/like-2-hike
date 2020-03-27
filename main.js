@@ -61,14 +61,20 @@ function addMarker(data) {
         infoWindow.open(map, this);
         var active = document.querySelector(".active-div");
         if (!active) {
-            marker.name = data.name;
-            document.getElementById(marker.name).classList.add("active-div");
+            highlightDiv(marker, data)
         } else {
             active.classList.remove("active-div");
-            marker.name = data.name;
-            document.getElementById(marker.name).classList.add("active-div");
+            highlightDiv(marker, data)
         }
     });
+}
+
+//Refactored highlight div
+function highlightDiv(marker, data) {
+    marker.name = data.name;
+    var selected = document.getElementById(marker.name)
+    selected.classList.add("active-div");
+    infoSection.insertBefore(selected, infoSection.firstChild)
 }
 
 function getHikingTrails(lat, long) {
