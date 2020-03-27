@@ -71,8 +71,8 @@ function addMarker(data) {
 
 //Refactored highlight div
 function highlightDiv(marker, data) {
-    marker.name = data.name;
-    var selected = document.getElementById(marker.name)
+    marker.id = data.id;
+    var selected = document.getElementById(marker.id)
     selected.classList.add("active-div");
     infoSection.insertBefore(selected, infoSection.firstChild)
 }
@@ -117,7 +117,7 @@ function addInfoDiv(data) {
 
     var trailInfo = document.createElement("div");
     trailInfo.classList.add("trail-info");
-    trailInfo.setAttribute("id", data.name);
+    trailInfo.setAttribute("id", data.id);
     trailInfo.style.backgroundColor = data.difficulty;
 
     trailInfo.append(name, difficulty, summary, rating, a);
