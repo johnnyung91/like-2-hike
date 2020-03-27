@@ -13,15 +13,15 @@ var infoSection = document.getElementById("info");
 
 locationForm.addEventListener("submit", initiateApp);
 
-function initiateApp(e) {
+function initiateApp(event) {
     mapLanding.innerHTML = "";
     infoSection.innerHTML = "";
     mapInfo.className = "container d-none"; // FOR REMOVING D-NONE
-    geocode(e);
+    geocode(event);
 }
 
-function geocode(e) {
-    e.preventDefault();
+function geocode(event) {
+    event.preventDefault();
     var location = document.getElementById("location-input").value;
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: location }, function(results, status) {

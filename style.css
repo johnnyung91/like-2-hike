@@ -35,6 +35,8 @@ h1 {
     width: 100%;
     border-radius: 10px;
     flex-basis: 49%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #info {
@@ -48,7 +50,7 @@ h1 {
 
 .trail-info {
     /* border: 1px solid black; */
-    /* width: 100%; */
+    width: 100%;
     margin: 0 20px 20px 20px;
     padding: 20px;
     border-radius: 10px;
@@ -68,6 +70,7 @@ p {
 input[type="text"], input[type="text"]:focus {
     background-color: lightgray;
     opacity: 0.5;
+    color: black;
 }
 
 a {
