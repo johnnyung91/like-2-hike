@@ -56,9 +56,18 @@ function addMarker(data) {
     });
 
     google.maps.event.addListener(marker, "click", function() {
-        var info = `<b>${data.name}</b> <br/> <br/>${data.location} <br/> <br/>${data.summary} <br/> <br/>Difficulty: ${data.difficulty} <br/> <br/> Rating: ${data.stars} <br/> <br/>${data.url}`;
+        var info = `<b>${data.name}</b> <br/> <br/>${data.location}`;
         infoWindow.setContent(info);
         infoWindow.open(map, this);
+        var active = document.querySelector(".active-div");
+        if (!active) {
+            marker.name = data.name;
+            document.getElementById(marker.name).classList.add("active-div");
+        } else {
+            active.classList.remove("active-div");
+            marker.name = data.name;
+            document.getElementById(marker.name).classList.add("active-div");
+        }
     });
 }
 
@@ -102,6 +111,7 @@ function addInfoDiv(data) {
 
     var trailInfo = document.createElement("div");
     trailInfo.classList.add("trail-info");
+    trailInfo.setAttribute("id", data.name);
     trailInfo.style.backgroundColor = data.difficulty;
 
     trailInfo.append(name, difficulty, summary, rating, a);
