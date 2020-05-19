@@ -69,6 +69,7 @@ function highlightDiv(marker, data) {
     marker.id = data.id;
     var selected = document.getElementById(marker.id)
     selected.classList.add("active-div");
+    document.querySelector('#info').scrollTo(0,0)
     infoSection.insertBefore(selected, infoSection.firstChild)
 }
 
