@@ -1,13 +1,9 @@
-//Global Variables
-var googleAPI = "AIzaSyDy-k7naixPLfTdtOFOWye58XgWfSUNrgY";
 var hikingAPI = "200712037-04ab66ab7f810ab7c981e63fe3f4d800";
 var map;
 var infoWindow;
 
-//DOM Queries
 var mapLanding = document.getElementById("map");
-var mapInfo = document.getElementById("map-info"); // FOR REMOVING D-NONE
-var submitButton = document.getElementById("submit");
+var mapInfo = document.getElementById("map-info");
 var locationForm = document.getElementById("location-form");
 var infoSection = document.getElementById("info");
 
@@ -16,7 +12,7 @@ locationForm.addEventListener("submit", initiateApp);
 function initiateApp(event) {
     mapLanding.innerHTML = "";
     infoSection.innerHTML = "";
-    mapInfo.className = "container d-none"; // FOR REMOVING D-NONE
+    mapInfo.className = "container d-none";
     geocode(event);
 }
 
@@ -38,7 +34,7 @@ function geocode(event) {
 function initMap(lat, long, array) {
     map = new google.maps.Map(mapLanding, {
         center: { lat: lat, lng: long },
-        zoom: 10
+        zoom: 9
     });
 
     infoWindow = new google.maps.InfoWindow();
@@ -69,7 +65,6 @@ function addMarker(data) {
     });
 }
 
-//Refactored highlight div
 function highlightDiv(marker, data) {
     marker.id = data.id;
     var selected = document.getElementById(marker.id)
@@ -83,8 +78,7 @@ function getHikingTrails(lat, long) {
         url: `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=15&key=${hikingAPI}`,
         success: function(data) {
             var trailArray = data.trails;
-            console.log(trailArray);
-            document.querySelector(".d-none").classList.remove("d-none"); // FOR REMOVING D-NONE
+            document.querySelector(".d-none").classList.remove("d-none");
             initMap(lat, long, trailArray);
         },
         error: function(err) {
