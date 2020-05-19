@@ -80,13 +80,7 @@ function highlightDiv(marker, data) {
 function getHikingTrails(lat, long) {
     $.ajax({
         method: "GET",
-        url:
-            "https://www.hikingproject.com/data/get-trails?lat=" +
-            lat +
-            "&lon=" +
-            long +
-            "&maxDistance=15&key=" +
-            hikingAPI,
+        url: `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=15&key=${hikingAPI}`,
         success: function(data) {
             var trailArray = data.trails;
             console.log(trailArray);
@@ -118,7 +112,12 @@ function addInfoDiv(data) {
     var trailInfo = document.createElement("div");
     trailInfo.classList.add("trail-info");
     trailInfo.setAttribute("id", data.id);
-    trailInfo.style.backgroundColor = data.difficulty;
+
+    let color = data.difficulty
+    if (data.difficulty === 'greenBlue') color = 'green';
+    if (data.difficulty === 'blueBlack') color = 'blue'
+
+    trailInfo.style.backgroundColor = color;
 
     trailInfo.append(name, difficulty, summary, rating, a);
     infoSection.appendChild(trailInfo);
