@@ -1,19 +1,31 @@
-# C220-Hackathon-2
+# Like 2 Hike
 
-For this Hackathon, you will be combining multiple public APIs of your choosing in order to create a web application that uses their combined data to create something new. The application is yours to design, but your idea must be approved by an instructor before you can move forward with building the application.
+> - Maintained by: `johnnyung91`
 
-### Requirements
-- Combine **at least** 2 public APIs via AJAX requests and present their combined information in a web application of your design.
-- Must be issue-managed via [Meistertask](https://www.meistertask.com/) or an equivalent Kanban board.
-- Application idea **MUST** be approved by an instructor before you begin coding your project.
+## Description
 
+An interactive JavaScript Application that uses public APIs to help users find available hiking trails based on a given location
 
-### Approved API List
+## Live Demo
 
-Found [**here**](https://docs.google.com/document/d/10CMIYVWv36gophaq_3DldBoAT4w6g4xL9xEMnEu-z5o/edit?usp=sharing)
+Try the application live at
 
-### ProgrammableWeb API Directory
+## Technologies Used
+- JavaScript
+- jQuery
+- Bootstrap 4
+- Font Awesome 5.12.1
+- HTML5
+- CSS3
 
-Found [**here**](https://www.programmableweb.com/apis/directory)
+- APIs Used:
+    - Google Maps API
+    - Hiking Project API
 
-**NOTE:** Any APIs found through this link not on the approved API list above must be approved by an instructor to be used. In order to be approved, you must be able to provide proof of a successful AJAX call in the browser **WITHOUT** using VSCode's Live Server.
+## Features
+- User can input a location
+- Interactive map that displays markers of 10 available hiking trails in a set radius
+- Information section of each trail retreived from query
+
+## Preview
+![like-2-hike-preview](./assets/preview.png)
