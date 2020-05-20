@@ -1,0 +1,31 @@
+{
+  "name": "like-2-hike",
+  "version": "1.0.0",
+  "description": "> - Maintained by: `johnnyung91`",
+  "main": "server/public/main.js",
+  "scripts": {
+    "dev": "npm-run-all --silent --parallel dev:*",
+    "dev:server": "nodemon server/index.js",
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnnyung91/like2hike.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnnyung91/like2hike/issues"
+  },
+  "homepage": "https://github.com/johnnyung91/like2hike#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5"
+  }
+}
