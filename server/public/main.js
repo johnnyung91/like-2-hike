@@ -1,4 +1,3 @@
-var hikingAPI = "200712037-04ab66ab7f810ab7c981e63fe3f4d800";
 var map;
 var infoWindow;
 
@@ -76,13 +75,13 @@ function highlightDiv(marker, data) {
 function getHikingTrails(lat, long) {
     $.ajax({
         method: "GET",
-        url: `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=15&key=${hikingAPI}`,
-        success: function(data) {
+        url: `/api/hikingtrails/${lat}/${long}`,
+        success: data => {
             var trailArray = data.trails;
             document.querySelector(".d-none").classList.remove("d-none");
             initMap(lat, long, trailArray);
         },
-        error: function(err) {
+        error: err => {
             console.error(err);
         }
     });
