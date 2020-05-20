@@ -2,11 +2,11 @@
   "name": "like-2-hike",
   "version": "1.0.0",
   "description": "> - Maintained by: `johnnyung91`",
-  "main": "main.js",
+  "main": "server/public/main.js",
   "scripts": {
     "dev": "npm-run-all --silent --parallel dev:*",
     "dev:server": "nodemon server/index.js",
-    "start": "NODE_ENV=production node server/index.js",
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
