@@ -8,7 +8,7 @@ An interactive JavaScript Application that uses the [Google Maps API](https://de
 
 ## Live Demo
 
-Try the application live at
+Try the application live at https://like2hike.johnnyungcodes.com/
 
 ## Technologies Used
 - JavaScript
