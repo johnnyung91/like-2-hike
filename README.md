@@ -1,14 +1,8 @@
 # Like 2 Hike
-
-> - Maintained by: `johnnyung91`
-
-## Description
-
 An interactive JavaScript Application that uses the [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial) and the [Hiking Project Data API](https://www.hikingproject.com/data) to help users find available hiking trails based on a given location.
 
 ## Live Demo
-
-Try the application live at https://like2hike.johnnyungcodes.com/
+Try the application live at: https://like2hike.johnnyungcodes.com/
 
 ## Technologies Used
 - JavaScript
@@ -45,14 +39,12 @@ Try the application live at https://like2hike.johnnyungcodes.com/
     ```
 3. Register for personal API keys at: [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial) and [Hiking Project Data API](https://www.hikingproject.com/data)
 4. Create a ```.env``` file using provided ```.env.example``` as a template.  Insert new value for ```hiking_APIKey``` with personal API key from Hiking Project API.
-
     ```shell
     PORT=3001
     DEV_SERVER_PORT=3000
     hiking_APIKey=YOUR_API_KEY
     ```
 5. Open ```index.html``` and substitute Google Maps API key with your own personal API.
-
     ```html
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY">

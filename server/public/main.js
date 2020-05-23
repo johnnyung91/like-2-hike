@@ -1,12 +1,17 @@
 var map;
 var infoWindow;
 
-var mapLanding = document.getElementById("map");
-var mapInfo = document.getElementById("map-info");
-var locationForm = document.getElementById("location-form");
-var infoSection = document.getElementById("info");
+const mapLanding = document.getElementById("map");
+const mapInfo = document.getElementById("map-info");
+const locationForm = document.getElementById("location-form");
+const infoSection = document.getElementById("info");
+const modal = document.querySelector("#modal-error")
+const closeButtons = document.querySelectorAll(".close-modal")
 
 locationForm.addEventListener("submit", initiateApp);
+closeButtons.forEach(btn => {
+    btn.addEventListener("click", closeModal)
+})
 
 function initiateApp(event) {
     mapLanding.innerHTML = "";
@@ -25,7 +30,8 @@ function geocode(event) {
             var longitude = results[0].geometry.location.lng();
             getHikingTrails(latitude, longitude);
         } else {
-            alert("ADDRESS CANNOT BE FOUND");
+            modal.classList.remove('hidden')
+            document.querySelector('.modal-dialog').classList.add('slide-in')
         }
     });
 }
@@ -115,4 +121,9 @@ function addInfoDiv(data) {
 
     trailInfo.append(name, difficulty, summary, rating, a);
     infoSection.appendChild(trailInfo);
+}
+
+function closeModal() {
+    modal.classList.add('hidden')
+    document.querySelector('.modal-dialog').classList.remove('slide-in')
 }
