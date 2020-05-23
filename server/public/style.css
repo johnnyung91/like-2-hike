@@ -102,6 +102,20 @@ a {
     display: none;
 }
 
+.slide-in {
+    animation: slide 0.2s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateY(-25px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 @media only screen
 and (min-device-width: 375px)
 and (max-device-width: 667px)
