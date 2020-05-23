@@ -25,7 +25,8 @@ function geocode(event) {
             var longitude = results[0].geometry.location.lng();
             getHikingTrails(latitude, longitude);
         } else {
-            alert("ADDRESS CANNOT BE FOUND");
+            // alert("ADDRESS CANNOT BE FOUND");
+            document.querySelector("#modal-error").classList.remove('fade', 'hidden')
         }
     });
 }
