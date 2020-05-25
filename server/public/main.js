@@ -7,6 +7,7 @@ const locationForm = document.getElementById("location-form");
 const infoSection = document.getElementById("info");
 const modal = document.querySelector("#modal-error")
 const closeButtons = document.querySelectorAll(".close-modal")
+const loading = document.getElementById('loading-screen')
 
 locationForm.addEventListener("submit", initiateApp);
 closeButtons.forEach(btn => {
@@ -14,6 +15,7 @@ closeButtons.forEach(btn => {
 })
 
 function initiateApp(event) {
+    loading.classList.remove('hidden')
     mapLanding.innerHTML = "";
     infoSection.innerHTML = "";
     mapInfo.className = "container d-none";
@@ -86,6 +88,7 @@ function getHikingTrails(lat, long) {
             var trailArray = data.trails;
             document.querySelector(".d-none").classList.remove("d-none");
             initMap(lat, long, trailArray);
+            loading.classList.add('hidden')
         },
         error: err => {
             console.error(err);
