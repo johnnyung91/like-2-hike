@@ -15,9 +15,9 @@ closeButtons.forEach(btn => {
 })
 
 function initiateApp(event) {
-    loading.classList.remove('hidden')
     mapLanding.innerHTML = "";
     infoSection.innerHTML = "";
+    loading.classList.remove('hidden')
     mapInfo.className = "container d-none";
     geocode(event);
 }
@@ -30,10 +30,30 @@ function geocode(event) {
         if (status === "OK") {
             var latitude = results[0].geometry.location.lat();
             var longitude = results[0].geometry.location.lng();
-            getHikingTrails(latitude, longitude);
+            setTimeout(() => getHikingTrails(latitude, longitude), 750)
+
         } else {
-            modal.classList.remove('hidden')
-            document.querySelector('.modal-dialog').classList.add('slide-in')
+            setTimeout(() => {
+                loading.classList.add('hidden')
+                modal.classList.remove('hidden')
+                document.querySelector('.modal-dialog').classList.add('slide-in')
+            }, 750)
+        }
+    });
+}
+
+function getHikingTrails(lat, long) {
+    $.ajax({
+        method: "GET",
+        url: `/api/hikingtrails/${lat}/${long}`,
+        success: data => {
+            var trailArray = data.trails;
+            document.querySelector(".d-none").classList.remove("d-none");
+            initMap(lat, long, trailArray);
+            loading.classList.add('hidden')
+        },
+        error: err => {
+            console.error(err);
         }
     });
 }
@@ -78,22 +98,6 @@ function highlightDiv(marker, data) {
     selected.classList.add("active-div");
     document.querySelector('#info').scrollTo(0,0)
     infoSection.insertBefore(selected, infoSection.firstChild)
-}
-
-function getHikingTrails(lat, long) {
-    $.ajax({
-        method: "GET",
-        url: `/api/hikingtrails/${lat}/${long}`,
-        success: data => {
-            var trailArray = data.trails;
-            document.querySelector(".d-none").classList.remove("d-none");
-            initMap(lat, long, trailArray);
-            loading.classList.add('hidden')
-        },
-        error: err => {
-            console.error(err);
-        }
-    });
 }
 
 function addInfoDiv(data) {
