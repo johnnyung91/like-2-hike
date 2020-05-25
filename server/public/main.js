@@ -30,14 +30,14 @@ function geocode(event) {
         if (status === "OK") {
             var latitude = results[0].geometry.location.lat();
             var longitude = results[0].geometry.location.lng();
-            setTimeout(() => getHikingTrails(latitude, longitude), 750)
+            setTimeout(() => getHikingTrails(latitude, longitude), 500)
 
         } else {
             setTimeout(() => {
                 loading.classList.add('hidden')
                 modal.classList.remove('hidden')
                 document.querySelector('.modal-dialog').classList.add('slide-in')
-            }, 750)
+            }, 500)
         }
     });
 }
