@@ -1,183 +1,201 @@
 body {
-    height: 100vh;
-    background-image: url(./assets/hiking-abstract.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: "Cabin", sans-serif;
+  height: 100vh;
+  background-image: url(./assets/hiking-abstract.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Cabin", sans-serif;
 }
 
 header {
-    text-align: center;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
 }
 
 h1 {
-    font-size: 4rem;
-    letter-spacing: 0.5rem;
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
 }
 
 .container-all {
-    padding: 0;
-    padding-top: 15px;
-    background-color: rgba(251, 191, 95, 0.2);
-    border-radius: 10px;
+  padding: 0;
+  padding-top: 15px;
+  background-color: rgba(251, 191, 95, 0.2);
+  border-radius: 10px;
 }
 
 .row-map {
-    margin: 0;
-    padding-bottom: 10px;
+  margin: 0;
+  padding-bottom: 10px;
 }
 
-#map, #info {
-    height: 65vh;
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
+#map,
+#info {
+  height: 65vh;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #info {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 #info::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
 
 .trail-info {
-    width: 100%;
-    margin: 10px;
-    padding: 20px;
-    border-radius: 10px;
-    opacity: 0.7;
-    color: whitesmoke;
-    word-wrap: break-word;
+  width: 100%;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  opacity: 0.7;
+  color: whitesmoke;
+  word-wrap: break-word;
 }
 
 h5 {
-    font-weight: 900;
+  font-weight: 900;
 }
 
 p {
-    margin-bottom: 8px;
-    font-size: 15px;
+  margin-bottom: 8px;
+  font-size: 15px;
 }
 
-input[type="text"], input[type="text"]:focus {
-    background-color: lightgray;
-    opacity: 0.5;
+input[type="text"],
+input[type="text"]:focus {
+  background-color: lightgray;
+  opacity: 0.5;
 }
 
 a {
-    color: whitesmoke
+  color: whitesmoke;
 }
 
 .active-div {
-    order: -1;
-    box-shadow: 0px 0px 5px 5px white;
+  order: -1;
+  box-shadow: 0px 0px 5px 5px white;
 }
 
 .modal-error {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    top: 0;
-    animation: fade-in 0.5s;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  animation: fade-in 0.5s;
 }
 
 .modal-overlay {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0,0 , 0.4);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .loading-screen {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    top: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
-.loading-screen > img {
-    width: 275px;
+.loading-overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+#loading-image {
+  width: 275px;
+  animation: rotation 8s infinite linear;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .slide-in {
-    animation: slide 0.5s;
-    animation-timing-function: ease-out;
+  animation: slide 0.5s;
+  animation-timing-function: ease-out;
 }
 
 @keyframes slide {
-    0% {
-        transform: translateY(-25px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+  0% {
+    transform: translateY(-25px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 @keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 100%;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
 
-@media only screen
-and (min-device-width: 375px)
-and (max-device-width: 667px)
-and (-webkit-min-device-pixel-ratio: 2) {
-    .container-all {
-        width: 95%;
-    }
-
-    header {
-        padding-top: 1rem;
-        padding-bottom: 0;
-    }
-
-    header > h1 {
-        font-size: 2rem;
-    }
-
-    #map, #info {
-        height: 36vh;
-    }
-
-    .trail-info > h5 {
-        font-size: 15px;
-    }
-
-    .trail-info > p,
-    .trail-info > a {
-        font-size: 12px;
-    }
-
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
-@media only screen
-  and (min-device-width: 375px)
-  and (max-device-width: 667px)
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: landscape) {
-    #map, #info {
-        height: 45vh;
-    }
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+  .container-all {
+    width: 95%;
+  }
+
+  header {
+    padding-top: 1rem;
+    padding-bottom: 0;
+  }
+
+  header > h1 {
+    font-size: 2rem;
+  }
+
+  #map,
+  #info {
+    height: 36vh;
+  }
+
+  .trail-info > h5 {
+    font-size: 15px;
+  }
+
+  .trail-info > p,
+  .trail-info > a {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  #map,
+  #info {
+    height: 45vh;
+  }
 }
