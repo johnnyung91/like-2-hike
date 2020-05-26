@@ -67,7 +67,7 @@ p {
 input[type="text"],
 input[type="text"]:focus {
   background-color: lightgray;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 a {
