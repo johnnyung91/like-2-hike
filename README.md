@@ -21,7 +21,7 @@ Try the application live at: https://like2hike.johnnyungcodes.com/
 - Mobile Responsive: compatible in portrait and landscape mode for iPhone 6/7/8 and iPad
 
 ## Preview
-![like-2-hike-preview](./server/public/assets/preview.png)
+![like-2-hike-preview](./server/public/assets/preview.gif)
 
 #### Getting Started
 
