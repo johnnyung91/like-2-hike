@@ -4,6 +4,7 @@ var infoWindow;
 const mapLanding = document.getElementById("map");
 const mapInfo = document.getElementById("map-info");
 const locationForm = document.getElementById("location-form");
+const locationInput = document.getElementById('location-input')
 const infoSection = document.getElementById("info");
 const modal = document.querySelector("#modal-error")
 const closeButtons = document.querySelectorAll(".close-modal")
@@ -15,6 +16,7 @@ closeButtons.forEach(btn => {
 })
 
 function initiateApp(event) {
+    locationInput.blur()
     mapLanding.innerHTML = "";
     infoSection.innerHTML = "";
     loading.classList.remove('hidden')
