@@ -111,18 +111,22 @@ function addInfoDiv(data) {
     var rating = document.createElement("p");
     rating.textContent = "Rating: " + data.stars;
     var a = document.createElement("a");
-    var link = document.createTextNode(data.url);
+    var button = document.createElement('button')
+    var buttonText = document.createTextNode('Find More Details');
+    button.appendChild(buttonText)
+    button.className = 'btn btn-info btn-block btn-sm info'
     a.href = data.url;
     a.setAttribute("target", "_blank");
-    a.appendChild(link);
-
-    var trailInfo = document.createElement("div");
-    trailInfo.classList.add("trail-info");
-    trailInfo.setAttribute("id", data.id);
+    a.appendChild(button);
 
     let color = data.difficulty
     if (data.difficulty === 'greenBlue') color = 'green';
     if (data.difficulty === 'blueBlack') color = 'blue'
+
+    var trailInfo = document.createElement("div");
+    trailInfo.classList.add("trail-info", `${color}`);
+    trailInfo.setAttribute("id", data.id);
+
 
     trailInfo.style.backgroundColor = color;
 

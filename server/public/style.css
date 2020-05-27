@@ -50,7 +50,7 @@ h1 {
   margin: 10px;
   padding: 20px;
   border-radius: 10px;
-  opacity: 0.7;
+  opacity: 0.8;
   color: whitesmoke;
   word-wrap: break-word;
 }
@@ -71,7 +71,7 @@ input[type="text"]:focus {
 }
 
 a {
-  color: whitesmoke;
+  opacity: 1
 }
 
 .active-div {
