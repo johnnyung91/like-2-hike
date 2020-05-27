@@ -112,7 +112,7 @@ function addInfoDiv(data) {
     rating.textContent = "Rating: " + data.stars;
     var a = document.createElement("a");
     var button = document.createElement('button')
-    var buttonText = document.createTextNode('Get More Details');
+    var buttonText = document.createTextNode('More Trail Details');
     button.appendChild(buttonText)
     button.className = 'btn btn-info btn-block btn-sm info'
     a.href = data.url;
