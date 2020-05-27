@@ -50,9 +50,20 @@ h1 {
   margin: 10px;
   padding: 20px;
   border-radius: 10px;
-  opacity: 0.8;
   color: whitesmoke;
   word-wrap: break-word;
+}
+
+.blue {
+  background-color: rgba(0, 0, 255, 0.7);
+}
+
+.green {
+  background-color: rgba(0, 128, 0, 0.7);
+}
+
+.black {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 h5 {
@@ -72,6 +83,10 @@ input[type="text"]:focus {
 
 a {
   opacity: 1
+}
+
+a:link {
+  text-decoration: none;
 }
 
 .active-div {

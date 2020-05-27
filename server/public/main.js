@@ -112,7 +112,7 @@ function addInfoDiv(data) {
     rating.textContent = "Rating: " + data.stars;
     var a = document.createElement("a");
     var button = document.createElement('button')
-    var buttonText = document.createTextNode('Find More Details');
+    var buttonText = document.createTextNode('Get More Details');
     button.appendChild(buttonText)
     button.className = 'btn btn-info btn-block btn-sm info'
     a.href = data.url;
@@ -126,9 +126,6 @@ function addInfoDiv(data) {
     var trailInfo = document.createElement("div");
     trailInfo.classList.add("trail-info", `${color}`);
     trailInfo.setAttribute("id", data.id);
-
-
-    trailInfo.style.backgroundColor = color;
 
     trailInfo.append(name, difficulty, summary, rating, a);
     infoSection.appendChild(trailInfo);
